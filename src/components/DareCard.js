@@ -1,7 +1,11 @@
 import styled from "styled-components/macro"
+import { Link } from 'react-router-dom';
 
 export default function DareCard({id, headline}){
-    return <DareCardSection><p>{id}{headline}</p></DareCardSection>
+    return <DareCardSection>
+        <p>{id}{headline}</p>
+        <Link to={`/DaresPage/${id}`}><button>Show me</button></Link>
+        </DareCardSection>
 }
 
 

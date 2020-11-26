@@ -13,7 +13,6 @@ export default function DaresPage () {
             <Darelist/>
             <Headline>Who I dared</Headline>
             <Darelist/>
-
         </StyledCardGrid>
     </>
   )

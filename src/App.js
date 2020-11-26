@@ -5,6 +5,8 @@ import CreateDarePage from './pages/CreateDarePage';
 import HighscorePage from './pages/HighscorePage';
 import ProfilePage from './pages/ProfilePage';
 import HomePage from './pages/HomePage';
+import DareCardDetails from './components/DareCardDetails';
+import DareCardUpload from './components/DareCardUpload';
 
 
 function App() {
@@ -13,10 +15,12 @@ function App() {
     <div className="App">
       <Switch>
       <Route path="/" exact component={HomePage} />
-      <Route path="/DaresPage" component={DaresPage} />
-      <Route path="/CreateDarePage" component={CreateDarePage}/>
-      <Route path="/HighscorePage" component={HighscorePage}/>
-      <Route path="/ProfilePage" component={ProfilePage}/>
+      <Route path="/DaresPage" exact component={DaresPage} />
+      <Route path="/DaresPage/:id" exact component={DareCardDetails}/>
+      <Route path="/DaresPage/DareCardUpload/:id" exact component={DareCardUpload}/>
+      <Route path="/CreateDarePage" exact component={CreateDarePage}/>
+      <Route path="/HighscorePage" exact component={HighscorePage}/>
+      <Route path="/ProfilePage" exact component={ProfilePage}/>
       </Switch>
       <Navigation/>
     </div>

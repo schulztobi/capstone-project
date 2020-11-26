@@ -7,8 +7,6 @@ export default function Darelist(){
         <List>
             {dares.map((dare) => {
                 return <DareCard key={dare.id} id={dare.id} headline={dare.headline}/>}
-                
-                
             )}
         </List>
     )
