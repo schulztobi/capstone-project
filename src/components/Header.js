@@ -14,6 +14,7 @@ const StyledHeader = styled.header`
   border: 1px solid var(--silver-main);
   margin: 30px;
   height: 80px;
+  background-color: var(--silver-main);
 `
 
 const Headline = styled.h1`

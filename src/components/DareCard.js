@@ -3,6 +3,8 @@ import styled from "styled-components/macro"
 export default function DareCard({id, headline}){
     return <DareCardSection><p>{id}{headline}</p></DareCardSection>
 }
+
+
 const DareCardSection = styled.section`
   display: flex;
   justify-content: flex-start;
