@@ -4,10 +4,7 @@ import { Link } from 'react-router-dom';
 export default function DareCard({ id, headline }) {
   return (
     <DareCardSection>
-      <p>
-        {id}
-        {headline}
-      </p>
+      <p>{headline}</p>
       <Link to={`/DaresPage/${id}`}>
         <button>Show me</button>
       </Link>
