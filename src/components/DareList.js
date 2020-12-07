@@ -15,13 +15,13 @@ export default function Darelist() {
     getDares().then((data) => setDareData([...data]));
   }, []);
 
-  console.log(dareData);
+  // console.log(dareData);
 
   return (
     <>
       <List>
         {dareData?.map((dare) => {
-          //   console.log(dare);
+          console.log(dare);
           return (
             <DareCard key={dare._id} id={dare._id} headline={dare.headline} />
           );

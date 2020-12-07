@@ -5,9 +5,9 @@ export default function FileUpload({ dare }) {
   const [file, setFile] = useState('');
   const [filename, setFilename] = useState('Choose File');
   const [uploadedFile, setUploadedFile] = useState({});
-  console.log(uploadedFile, 'uploadfile');
 
   function onChange(event) {
+    console.log(event, 'filepath');
     setFile(event.target.files[0]);
     setFilename(event.target.files[0].name);
   }
