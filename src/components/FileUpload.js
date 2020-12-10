@@ -20,7 +20,7 @@ export default function FileUpload({ dare }) {
 
     try {
       const res = await axios.patch(
-        `http://localhost:4000/dares/${dare}/upload`,
+        `http://localhost:4000/dares/${dare}/uploadmedia`,
         formData,
         {
           headers: {
