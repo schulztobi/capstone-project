@@ -11,7 +11,7 @@ export default function CreateDarePage() {
 
   function sendForm(event) {
     event.preventDefault();
-    fetch('http://localhost:4000/dares', {
+    fetch('http://localhost:4000/app/createDare', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
