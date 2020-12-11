@@ -7,13 +7,19 @@ import ProfilePage from './pages/ProfilePage';
 import HomePage from './pages/HomePage';
 import DareCardDetails from './components/DareCardDetails';
 import DareCardUpload from './components/DareCardUpload';
+import MainPage from './pages/MainPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Switch>
-          <Route path="/" exact component={HomePage} />
+          <Route path="/" exact component={MainPage} />
+          <Route path="/login" exact component={LoginPage} />
+          <Route path="/register" exact component={RegisterPage} />
+          <Route path="/HomePage" exact component={HomePage} />
           <Route path="/DaresPage" exact component={DaresPage} />
           <Route path="/DaresPage/:id" exact component={DareCardDetails} />
           <Route
