@@ -1,7 +1,11 @@
-import Header from '../components/Header'
+import Header from '../components/Header';
+import Navigation from '../components/Navigation';
 
-export default function ProfilePage(){
-    return (
-     <Header title="ProfilePage"/>
-    )
+export default function ProfilePage() {
+  return (
+    <>
+      <Header title="ProfilePage" />
+      <Navigation />
+    </>
+  );
 }

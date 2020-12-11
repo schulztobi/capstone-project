@@ -3,6 +3,7 @@ import useForm from '../hooks/useForm';
 import loginUser from '../services/loginUser';
 import { useState } from 'react';
 import { saveToken } from '../services/tokenStorage';
+import { Redirect } from 'react-router-dom';
 export default function LoginPage() {
   const { inputs, handleInputChange, handleSubmit } = useForm(
     {
@@ -12,7 +13,9 @@ export default function LoginPage() {
     submitForm
   );
 
+  const [loggedIn, setLoggedIn] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   function submitForm() {
     loginUser(inputs)
@@ -21,6 +24,7 @@ export default function LoginPage() {
           setIsError(true);
         } else {
           saveToken(result.token);
+          setIsSuccess(true);
         }
       })
       .catch(() => setIsError(true));
@@ -46,6 +50,12 @@ export default function LoginPage() {
         />
         <button>Login</button>
       </form>
+      {isSuccess && (
+        <button onClick={() => setLoggedIn(true)}>
+          You have loggin in succesfully
+        </button>
+      )}
+      {loggedIn && <Redirect to="/homepage" />}
       {isError && <p>Try again</p>}
     </>
   );

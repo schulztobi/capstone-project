@@ -2,6 +2,7 @@ import Header from '../components/Header';
 import styled from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import Navigation from '../components/Navigation';
 
 export default function CreateDarePage() {
   const [createDare, setCreateDare] = useState({
@@ -57,6 +58,7 @@ export default function CreateDarePage() {
           </Link>
         </ButtonContainer>
       </Form>
+      <Navigation />
     </>
   );
 }

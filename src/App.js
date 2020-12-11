@@ -31,7 +31,6 @@ function App() {
           <Route path="/HighscorePage" exact component={HighscorePage} />
           <Route path="/ProfilePage" exact component={ProfilePage} />
         </Switch>
-        <Navigation />
       </div>
     </Router>
   );

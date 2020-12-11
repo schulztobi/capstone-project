@@ -21,6 +21,7 @@ export default function RegisterPage() {
       .then((result) => {
         if (result.message === 'success') {
           setIsRegistered(true);
+          setIsError(false);
         } else if (result.message === 'User or email already taken') {
           setIsError(true);
         }
