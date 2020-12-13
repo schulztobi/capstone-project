@@ -5,17 +5,11 @@ export default function Navigation() {
   return (
     <NavBar>
       <NavLinks>
-        <Link to="/">
-          <li>Home</li>
-        </Link>
         <Link to="/DaresPage">
           <li>Dares</li>
         </Link>
         <Link to="/CreateDarePage">
           <li>CreateADare</li>
-        </Link>
-        <Link to="/HighscorePage">
-          <li>HighScore</li>
         </Link>
         <Link to="/ProfilePage">
           <li>Profile</li>
@@ -27,22 +21,23 @@ export default function Navigation() {
 
 const NavBar = styled.nav`
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  min-height: 10vh;
-  background-color: var(--red-main);
-  color: var(--silbver-main);
-  margin: 0;
-  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  background: transparent;
+  color: #fff;
+  margin-right: 500px;
   position: fixed;
   bottom: 0;
   overflow: hidden;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  padding: 0;
+  width: 100%;
 `;
 
 const NavLinks = styled.ul`
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-evenly;
   list-style: none;
   margin: 0;
   padding: 0;

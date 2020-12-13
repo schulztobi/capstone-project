@@ -55,7 +55,7 @@ export default function LoginPage() {
           You have loggin in succesfully
         </button>
       )}
-      {loggedIn && <Redirect to="/homepage" />}
+      {loggedIn && <Redirect to="/DaresPage" />}
       {isError && <p>Try again</p>}
     </>
   );

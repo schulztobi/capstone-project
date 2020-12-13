@@ -4,7 +4,7 @@ import Navigation from '../components/Navigation';
 export default function ProfilePage() {
   return (
     <>
-      <Header title="ProfilePage" />
+      <Header title="Profile" />
       <Navigation />
     </>
   );
