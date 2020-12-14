@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { saveToken } from '../services/tokenStorage';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components/macro';
+import Swal from 'sweetalert2';
+
 export default function LoginPage() {
   const { inputs, handleInputChange, handleSubmit } = useForm(
     {
@@ -14,20 +16,24 @@ export default function LoginPage() {
   );
 
   const [loggedIn, setLoggedIn] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [wrongPassword, setWrongPassword] = useState(false);
+  const [noUser, setNoUser] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   function submitForm() {
     loginUser(inputs)
       .then((result) => {
-        if (result.message !== 'success') {
-          setIsError(true);
-        } else {
+        if (result.message === 'success') {
           saveToken(result.token);
           setIsSuccess(true);
+        } else if (result.message === 'wrongPassword') {
+          setWrongPassword(true);
+        } else if (result.message === 'noUser') {
+          setNoUser(true);
         }
       })
-      .catch(() => setIsError(true));
+      .catch(() => setNoUser(true));
   }
 
   return (
@@ -36,6 +42,7 @@ export default function LoginPage() {
         <StyledContent>
           <h1>I Dare</h1>
           <StyledY>You</StyledY>
+          <p>enter an account</p>
         </StyledContent>
         <Styledform onSubmit={handleSubmit}>
           <StyledInput
@@ -55,12 +62,38 @@ export default function LoginPage() {
           <StyledButton>Login</StyledButton>
         </Styledform>
         {isSuccess && (
-          <button onClick={() => setLoggedIn(true)}>
-            You have loggin in succesfully
-          </button>
+          <StyledBackgroundModal>
+            <StyledModal>
+              <p>Login successful</p>
+              <StyledButton onClick={() => setLoggedIn(true)}>
+                I Dare
+              </StyledButton>
+            </StyledModal>
+          </StyledBackgroundModal>
         )}
         {loggedIn && <Redirect to="/DaresPage" />}
-        {isError && <p>Try again</p>}
+        {wrongPassword && (
+          <StyledBackgroundModal>
+            <StyledModal>
+              <p>Wrong Password!</p>
+              <StyledButton onClick={() => setIsError(true)}>
+                I Pussy out
+              </StyledButton>
+            </StyledModal>
+          </StyledBackgroundModal>
+        )}
+        {isError && <Redirect to="/" />}
+        {noUser && (
+          <StyledBackgroundModal>
+            <StyledModal>
+              <p>No User found!</p>
+              <StyledButton onClick={() => setIsError(true)}>
+                I Pussy out
+              </StyledButton>
+            </StyledModal>
+          </StyledBackgroundModal>
+        )}
+        {isError && <Redirect to="/" />}
       </StyledContainer>
     </>
   );
@@ -72,6 +105,7 @@ const StyledContainer = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  position: relative;
 `;
 
 const Styledform = styled.form`
@@ -114,4 +148,25 @@ const StyledInput = styled.input`
   outline: none;
   padding: 10px 25px;
   margin: 5px;
+`;
+const StyledBackgroundModal = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledModal = styled.div`
+  color: #fff;
+  background: linear-gradient(-45deg, #e73c7e, #23a6d5);
+  height: 20%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+  align-items: center;
+  flex-direction: column;
 `;
