@@ -8,11 +8,9 @@ export default function DaresPage() {
     <>
       <Header title="Dares" />
       <StyledCardGrid>
-        <Headline>New Dares</Headline>
+        <Headline>Dares</Headline>
         <Darelist />
-        <Headline>Old Dares</Headline>
-        <Darelist />
-        <Headline>Who I dared</Headline>
+        <Headline>Whom I dared</Headline>
         <Darelist />
       </StyledCardGrid>
       <Navigation />
@@ -21,11 +19,13 @@ export default function DaresPage() {
 }
 
 const StyledCardGrid = styled.main`
-  padding-top: 0;
-  gap: 0;
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+  align-items: space-around;
 `;
 const Headline = styled.h2`
+  color: #fff;
   margin: 0;
   font-size: 20px;
-  color: var(--red-main);
 `;

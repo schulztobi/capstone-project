@@ -45,12 +45,14 @@ export default function RegisterPage() {
             name="username"
             onChange={handleInputChange}
             placeholder={'Username'}
+            autoComplete="off"
           />
           <StyledInput
             type="email"
             name="email"
             onChange={handleInputChange}
             placeholder={'Email'}
+            autoComplete="off"
           />
           <StyledInput
             type="password"

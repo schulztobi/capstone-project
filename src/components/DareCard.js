@@ -16,11 +16,11 @@ const DareCardSection = styled.section`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  position: relative;
-  margin-bottom: 5px;
-  padding: 5px;
-  background-color: var(--silver-main);
-
+  margin: 20px;
+  padding: 30px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.3);
   p {
     font-weight: 400;
     padding: 0;

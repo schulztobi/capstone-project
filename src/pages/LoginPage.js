@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { saveToken } from '../services/tokenStorage';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components/macro';
-import Swal from 'sweetalert2';
 
 export default function LoginPage() {
   const { inputs, handleInputChange, handleSubmit } = useForm(
@@ -16,24 +15,21 @@ export default function LoginPage() {
   );
 
   const [loggedIn, setLoggedIn] = useState(false);
-  const [wrongPassword, setWrongPassword] = useState(false);
-  const [noUser, setNoUser] = useState(false);
+  const [wrongData, setWrongData] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
 
   function submitForm() {
     loginUser(inputs)
       .then((result) => {
-        if (result.message === 'success') {
+        if (result.message !== 'success') {
+          setWrongData(true);
+        } else {
           saveToken(result.token);
           setIsSuccess(true);
-        } else if (result.message === 'wrongPassword') {
-          setWrongPassword(true);
-        } else if (result.message === 'noUser') {
-          setNoUser(true);
         }
       })
-      .catch(() => setNoUser(true));
+      .catch(() => setWrongData(true));
   }
 
   return (
@@ -51,6 +47,7 @@ export default function LoginPage() {
             onChange={handleInputChange}
             placeholder={'Username'}
             value={inputs.username}
+            autoComplete="off"
           />
           <StyledInput
             type="password"
@@ -72,21 +69,10 @@ export default function LoginPage() {
           </StyledBackgroundModal>
         )}
         {loggedIn && <Redirect to="/DaresPage" />}
-        {wrongPassword && (
+        {wrongData && (
           <StyledBackgroundModal>
             <StyledModal>
-              <p>Wrong Password!</p>
-              <StyledButton onClick={() => setIsError(true)}>
-                I Pussy out
-              </StyledButton>
-            </StyledModal>
-          </StyledBackgroundModal>
-        )}
-        {isError && <Redirect to="/" />}
-        {noUser && (
-          <StyledBackgroundModal>
-            <StyledModal>
-              <p>No User found!</p>
+              <p>User or Password wrong</p>
               <StyledButton onClick={() => setIsError(true)}>
                 I Pussy out
               </StyledButton>

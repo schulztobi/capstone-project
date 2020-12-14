@@ -20,28 +20,30 @@ export default function Navigation() {
 }
 
 const NavBar = styled.nav`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: transparent;
-  color: #fff;
-  margin-right: 500px;
+  padding: 0 10px;
   position: fixed;
   bottom: 0;
-  overflow: hidden;
-  border: 1px solid #fff;
-  border-radius: 20px;
-  padding: 0;
   width: 100%;
 `;
 
 const NavLinks = styled.ul`
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   list-style: none;
-  margin: 0;
   padding: 0;
-
+  align-items: center;
+  background: transparent;
+  backdrop-filter: blur(4px);
+  color: #fff;
+  overflow: hidden;
+  position: sticky;
+  bottom: 0;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  height: 50px;
+  width: 100%;
+  box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.3);
   li {
     color: var(--silver-main);
     margin: 5px;

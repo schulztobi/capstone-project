@@ -32,8 +32,10 @@ export default function Darelist() {
 }
 const List = styled.ul`
   padding: 0;
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   width: 100%;
-  height: 130px;
+  height: 250px;
   overflow-y: scroll;
+  scrollbar-color: red;
 `;
