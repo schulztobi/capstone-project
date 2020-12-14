@@ -1,8 +1,5 @@
 import { Link } from 'react-router-dom';
-import logInUser from '../services/loginUser';
-import { loadToken } from '../services/tokenStorage';
 import styled from 'styled-components/macro';
-import { scryRenderedDOMComponentsWithTag } from 'react-dom/test-utils';
 
 export default function MainPage() {
   // function verifyUser(){
