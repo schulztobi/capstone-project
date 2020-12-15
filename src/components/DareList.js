@@ -38,4 +38,5 @@ const List = styled.ul`
   height: 250px;
   overflow-y: scroll;
   scrollbar-color: red;
+  border-bottom: 1px solid var(--fifth);
 `;

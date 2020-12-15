@@ -1,26 +1,45 @@
 import styled from 'styled-components/macro';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import {
+  FaRegListAlt,
+  FaListAlt,
+  FaRegPlusSquare,
+  FaRegUser,
+} from 'react-icons/fa';
 
-export default function Navigation() {
+const Navigation = (props) => {
+  console.log('props', props);
   return (
     <NavBar>
       <NavLinks>
         <Link to="/DaresPage">
-          <li>Dares</li>
+          <li>
+            {props.location.pathname === '/DaresPage' ? (
+              <FaListAlt size="2em" color="var(--fifth)" />
+            ) : (
+              <FaRegListAlt size="2em" color="var(--fifth)" />
+            )}
+          </li>
         </Link>
         <Link to="/CreateDarePage">
-          <li>CreateADare</li>
+          <li>
+            <FaRegPlusSquare size="2em" color="var(--fifth)" />
+          </li>
         </Link>
         <Link to="/ProfilePage">
-          <li>Profile</li>
+          <li>
+            <FaRegUser size="2em" color="var(--fifth)" />
+          </li>
         </Link>
       </NavLinks>
     </NavBar>
   );
-}
+};
+
+export default withRouter(Navigation);
 
 const NavBar = styled.nav`
-  padding: 0 10px;
+  padding: 0 20px;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -28,10 +47,11 @@ const NavBar = styled.nav`
 
 const NavLinks = styled.ul`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   list-style: none;
   padding: 0;
+  margin: 0;
   align-items: center;
   background: transparent;
   backdrop-filter: blur(4px);
@@ -45,8 +65,6 @@ const NavLinks = styled.ul`
   width: 100%;
   box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.3);
   li {
-    color: var(--silver-main);
-    margin: 5px;
   }
   a {
     text-decoration: none;

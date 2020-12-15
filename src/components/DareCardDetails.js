@@ -22,42 +22,99 @@ export default function DareCardDetails({ match }) {
 
   return (
     <>
-      <h1>{fetchedDare?.headline}</h1>
-      <p>{fetchedDare?.infotext}</p>
-      <Link to={`/DaresPage/DareCardUpload/${match.params.id}`}>
-        <button>I Dare</button>
-      </Link>
-      <Link to="/DaresPage/">
-        <button>I Pussy out</button>
-      </Link>
+      <StyledContainer>
+        <StyledContent>
+          <h1>I Dare</h1>
+          <StyledY>You</StyledY>
+        </StyledContent>
+        <StyledCard>
+          <h1>{fetchedDare?.headline}</h1>
+          <p>{fetchedDare?.infotext}</p>
+          <Link to={`/DaresPage/DareCardUpload/${match.params.id}`}>
+            <StyledButtonDare>I Dare</StyledButtonDare>
+          </Link>
+          <Link to="/DaresPage/">
+            <StyledButtonPussy>I Pussy out</StyledButtonPussy>
+          </Link>
+        </StyledCard>
+      </StyledContainer>
     </>
   );
 }
 
-//   const [dareInfo, setDareInfo] = useState([
-//     {
-//       headline: '',
-//       infotext: '',
-//     },
-//   ]);
+const StyledContainer = styled.div`
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+`;
 
-//   getDares().then((data) => {
-//     setDareInfo([...data]);
-//     // console.log(data);
-//   });
+const StyledContent = styled.div`
+  color: #fff;
 
-//   const fetchedDare = dareInfo.find((dare) => dare._id === match.params.id);
+  h1 {
+    font-size: 70px;
+    margin: 50px 0 70px;
+    line-height: 0px;
+  }
+`;
 
-//   return (
-//     <>
-//       <h1>{fetchedDare.headline}</h1>
-//       <p>{fetchedDare.infotext}</p>
-//       <Link to={`/DaresPage/DareCardUpload/${match.params.id}`}>
-//         <button>I Dare</button>
-//       </Link>
-//       <Link to="/DaresPage/">
-//         <button>I Pussy out</button>
-//       </Link>
-//     </>
-//   );
-// }
+const StyledY = styled.h2`
+  font-size: 110px;
+  margin: 0 0 100px;
+  line-height: 0;
+`;
+
+const StyledCard = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.3);
+  h1 {
+    color: var(--fifth);
+  }
+  p {
+    color: #e3e3e3;
+  }
+`;
+
+const StyledButtonDare = styled.button`
+  color: #fbfcfd;
+  background: transparent;
+  border: 1px solid #fbfcfd;
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 25px;
+  margin: 5px;
+  font-size: 15px;
+
+  :hover {
+    color: var(--fifth);
+    background: #83f52c;
+    box-shadow: 0 0 10px #83f52c;
+  }
+`;
+const StyledButtonPussy = styled.button`
+  color: #fbfcfd;
+  background: transparent;
+  border: 1px solid #fbfcfd;
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 25px;
+  margin: 5px;
+  font-size: 15px;
+
+  :hover {
+    color: var(--fifth);
+    background: #ff073a;
+    box-shadow: 0 0 10px #ff073a;
+  }
+`;

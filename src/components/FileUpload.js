@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default function FileUpload({ dare }) {
   const [file, setFile] = useState('');
-  const [filename, setFilename] = useState('Choose File');
+  const [filename, setFilename] = useState('');
   const [uploadedFile, setUploadedFile] = useState({});
 
   function onChange(event) {
