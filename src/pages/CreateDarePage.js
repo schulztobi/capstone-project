@@ -4,46 +4,50 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Navigation from '../components/Navigation';
 import getUser from '../services/getUser';
+import jwt_decode from 'jwt-decode';
+import { loadToken } from '../services/tokenStorage';
 
 export default function CreateDarePage() {
   const [allUser, setAllUser] = useState([]);
-  const [findUser, setFindUser] = useState([]);
+  const [findUserId, setFindUserId] = useState([]);
   const [findUserName, setFindUserName] = useState([]);
-  console.log('find', findUser);
   const [createDare, setCreateDare] = useState({
     headline: '',
     infotext: '',
     daredUser: '',
+    dareCreator: '',
   });
+
+  let token = loadToken();
+  const decodedToken = jwt_decode(token);
 
   useEffect(() => {
     getUser().then((data) => {
       setAllUser([...data]);
       setCreateDare({
         ...createDare,
-        daredUser: findUser,
+        daredUser: findUserId,
+        dareCreator: decodedToken.userId,
       });
     });
-  }, [findUser]);
+  }, [findUserId]);
+  console.log(setCreateDare);
   console.log('alluser', allUser);
 
   function handleUserChange(event) {
-    console.log('name', event);
     const filteredUser = allUser.filter((user) => {
       return user.username
         .toLowerCase()
         .includes(event.target.value.toLowerCase());
     });
+    console.log('filterUser', filteredUser);
     let idArray = [];
     filteredUser.map((user) => idArray.push(user._id));
-    setFindUser(idArray);
+    setFindUserId(idArray);
 
     let nameArray = [];
     filteredUser.map((user) => nameArray.push(user.username));
     setFindUserName(nameArray);
-
-    console.log('nameArray', nameArray);
-    console.log('filteruser', filteredUser);
   }
 
   function sendForm(event) {
@@ -59,6 +63,7 @@ export default function CreateDarePage() {
       .then((createdDare) => console.log(createdDare, 'CREATED'))
       .catch((error) => console.error(error));
   }
+
   function handleDareChange(event) {
     setCreateDare({
       ...createDare,
@@ -88,7 +93,7 @@ export default function CreateDarePage() {
         <ButtonContainer>
           <button>Create</button>
 
-          <Link to="/">
+          <Link to="/DaresPage">
             <button>Back</button>
           </Link>
         </ButtonContainer>

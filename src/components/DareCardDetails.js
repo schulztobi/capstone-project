@@ -30,12 +30,14 @@ export default function DareCardDetails({ match }) {
         <StyledCard>
           <h1>{fetchedDare?.headline}</h1>
           <p>{fetchedDare?.infotext}</p>
-          <Link to={`/DaresPage/DareCardUpload/${match.params.id}`}>
-            <StyledButtonDare>I Dare</StyledButtonDare>
-          </Link>
-          <Link to="/DaresPage/">
-            <StyledButtonPussy>I Pussy out</StyledButtonPussy>
-          </Link>
+          <StyledButtonContainer>
+            <Link to={`/DaresPage/DareCardUpload/${match.params.id}`}>
+              <StyledButtonDare>I Dare</StyledButtonDare>
+            </Link>
+            <Link to="/DaresPage/">
+              <StyledButtonPussy>I Pussy out</StyledButtonPussy>
+            </Link>
+          </StyledButtonContainer>
         </StyledCard>
       </StyledContainer>
     </>
@@ -117,4 +119,8 @@ const StyledButtonPussy = styled.button`
     background: #ff073a;
     box-shadow: 0 0 10px #ff073a;
   }
+`;
+const StyledButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
 `;

@@ -1,5 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import axios from 'axios';
+import { StyledInput, StyledButton } from '../styles/ReusableStyledComponents';
+import styled from 'styled-components/macro';
 
 export default function FileUpload({ dare }) {
   const [file, setFile] = useState('');
@@ -40,21 +42,19 @@ export default function FileUpload({ dare }) {
 
   return (
     <Fragment>
-      <form>
-        <div>
-          <input type="file" id="customFile" onChange={onChange} />
-          <label htmlFor="customFile">{filename}</label>
-        </div>
+      <StyledForm>
+        <StyledInput type="file" id="customFile" onChange={onChange} />
+        {/* <label htmlFor="customFile">{filename}</label> */}
 
-        <button type="button" onClick={onSubmit}>
+        <StyledButton type="button" onClick={onSubmit}>
           upload
-        </button>
-      </form>
+        </StyledButton>
+      </StyledForm>
       {uploadedFile ? (
         <>
           <h3>{uploadedFile.fileName}</h3>
           <img
-            style={{ width: '100px', height: '100px' }}
+            style={{ width: '200px', height: '200px' }}
             src={uploadedFile.filePath}
             alt=""
           />
@@ -63,3 +63,8 @@ export default function FileUpload({ dare }) {
     </Fragment>
   );
 }
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+`;

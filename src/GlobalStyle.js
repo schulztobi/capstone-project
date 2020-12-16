@@ -11,7 +11,6 @@ body {
     padding:0;
     background: linear-gradient(-45deg,#EE7752,#E73C7E,#23A6D5,#23D5AB);
     background-size: 400% 400%;
-    position:relative;
     animation: change 10s ease-in-out infinite;
     height: 100vh;
 }

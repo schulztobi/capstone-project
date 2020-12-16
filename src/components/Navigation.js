@@ -3,7 +3,9 @@ import { Link, withRouter } from 'react-router-dom';
 import {
   FaRegListAlt,
   FaListAlt,
+  FaPlusSquare,
   FaRegPlusSquare,
+  FaUser,
   FaRegUser,
 } from 'react-icons/fa';
 
@@ -23,12 +25,20 @@ const Navigation = (props) => {
         </Link>
         <Link to="/CreateDarePage">
           <li>
-            <FaRegPlusSquare size="2em" color="var(--fifth)" />
+            {props.location.pathname === '/CreateDarePage' ? (
+              <FaPlusSquare size="2em" color="var(--fifth)" />
+            ) : (
+              <FaRegPlusSquare size="2em" color="var(--fifth)" />
+            )}
           </li>
         </Link>
         <Link to="/ProfilePage">
           <li>
-            <FaRegUser size="2em" color="var(--fifth)" />
+            {props.location.pathname === '/ProfilePage' ? (
+              <FaUser size="2em" color="var(--fifth)" />
+            ) : (
+              <FaRegUser size="2em" color="var(--fifth)" />
+            )}
           </li>
         </Link>
       </NavLinks>
