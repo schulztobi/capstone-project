@@ -14,18 +14,19 @@ export default function DareCard({ id, headline }) {
 
 const DareCardSection = styled.section`
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  margin: 20px;
-  padding: 30px;
+  margin-top: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  padding: 10px;
   border: 1px solid #fff;
   border-radius: 10px;
   box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.3);
   h3 {
     padding: 0;
     margin: 0;
-    margin-bottom: 20px;
     color: var(--fifth);
     font-size: 120%;
   }

@@ -55,6 +55,8 @@ export default function Darelist() {
   );
 }
 const List = styled.ul`
+  display: flex;
+  flex-direction: column;
   padding: 0;
   box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.2);
   border-radius: 6px;
