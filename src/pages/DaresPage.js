@@ -2,6 +2,7 @@ import styled from 'styled-components/macro';
 import Header from '../components/Header';
 import Darelist from '../components/DareList';
 import Navigation from '../components/Navigation';
+import WhomIDaredList from '../components/WhomIDaredList';
 
 export default function DaresPage() {
   return (
@@ -11,7 +12,7 @@ export default function DaresPage() {
         <Headline>Dares</Headline>
         <Darelist />
         <Headline>Whom I dared</Headline>
-        <Darelist />
+        <WhomIDaredList />
       </StyledCardGrid>
       <Navigation />
     </>

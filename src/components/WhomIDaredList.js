@@ -1,4 +1,10 @@
-export default function Darelist() {
+import styled from 'styled-components/macro';
+import WhomIDaredCard from './WhomIDaredCard';
+import { useEffect, useState } from 'react';
+import getDares from '../services/getDares';
+import { decodedToken } from '../services/decodedToken';
+
+export default function WhomIDaredList() {
   const [dareData, setDareData] = useState([
     {
       headline: '',
@@ -10,17 +16,38 @@ export default function Darelist() {
     getDares().then((data) => setDareData([...data]));
   }, []);
 
-  // console.log(dareData);
+  function filteredDareCreator(decodedToken, dares) {
+    return dares.filter(
+      (dare) => dare.dareCreator && dare.dareCreator === decodedToken.userId
+    );
+  }
+  const findDareCreator = filteredDareCreator(decodedToken, dareData);
 
   return (
     <>
       <List>
-        {dareData?.map((dare) => {
+        {findDareCreator.map((dare) => {
           return (
-            <DareCard key={dare._id} id={dare._id} headline={dare.headline} />
+            <WhomIDaredCard
+              key={dare._id}
+              id={dare._id}
+              headline={dare.headline}
+            />
           );
         })}
       </List>
     </>
   );
 }
+const List = styled.ul`
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  width: 100%;
+  height: 250px;
+  overflow-y: scroll;
+  scrollbar-color: red;
+  border-bottom: 1px solid var(--fifth);
+`;

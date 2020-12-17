@@ -7,6 +7,8 @@ import DareCardUpload from './components/DareCardUpload';
 import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import WhomIDaredCardDetails from './components/WhomIDaredCardDetails';
+import WhomIDaredCardDownload from './components/WhomIDaredCardDownload';
 
 function App() {
   return (
@@ -18,6 +20,16 @@ function App() {
           <Route path="/register" exact component={RegisterPage} />
           <Route path="/DaresPage" exact component={DaresPage} />
           <Route path="/DaresPage/:id" exact component={DareCardDetails} />
+          <Route
+            path="/WhomIDared/:id"
+            exact
+            component={WhomIDaredCardDetails}
+          />
+          <Route
+            path="/WhomIDared/Download/:id"
+            exact
+            component={WhomIDaredCardDownload}
+          />
           <Route
             path="/DaresPage/DareCardUpload/:id"
             exact

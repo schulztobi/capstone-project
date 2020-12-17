@@ -9,21 +9,33 @@ export default function Darelist() {
     {
       headline: '',
       infotext: '',
-      daredUser: [],
     },
   ]);
-  const [findDaredUserId, setFindDaredUserId] = useState([]);
 
   useEffect(() => {
     getDares().then((data) => setDareData([...data]));
   }, []);
 
-  console.log(dareData);
+  //////////////////////// Whom I Dare List //////////////////////////////////
+  function filteredDareCreator(decodedToken, dares) {
+    return dares.filter(
+      (dare) => dare.dareCreator && dare.dareCreator === decodedToken.userId
+    );
+  }
+  const findDareCreator = filteredDareCreator(decodedToken, dareData);
 
-  // const filteredDaredUser = dareData.filter((user) => {
-  //   return user.dareCreator;
-  // });
-  // console.log('filter', filteredDaredUser);
+  ////////////////////////////////////////////////////////////////////////
+
+  function filteredDareUser(decodedToken, dares) {
+    const daredUserLists = dares.filter((dare) => dare.daredUser);
+    const findDaredUserList = daredUserLists.filter(
+      (daredUserList) => daredUserList.array && daredUserList.array === 'lala'
+    );
+    return findDaredUserList;
+  }
+
+  console.log(filteredDareUser(decodedToken, dareData));
+
   // // let idArray = [];
   // // filteredDaredUser.map((user) => idArray.push(user._id));
   // // setFindDaredUserId(idArray);
@@ -33,7 +45,7 @@ export default function Darelist() {
   // console.log(decodedToken.userId);
   // console.log('showUserId', showDaredUserId);
 
-  // function handleDareChange({ decodedToken }) {
+  // function handleDareChange(decodedToken) {
   //   const filteredDare = dareData.filter((dare) => {
   //     return dare.dareCreator.toLowerCase().includes(decodedToken.userId);
   //   });

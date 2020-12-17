@@ -32,7 +32,6 @@ export default function CreateDarePage() {
     });
   }, [findUserId]);
   console.log(setCreateDare);
-  console.log('alluser', allUser);
 
   function handleUserChange(event) {
     const filteredUser = allUser.filter((user) => {
@@ -40,7 +39,6 @@ export default function CreateDarePage() {
         .toLowerCase()
         .includes(event.target.value.toLowerCase());
     });
-    console.log('filterUser', filteredUser);
     let idArray = [];
     filteredUser.map((user) => idArray.push(user._id));
     setFindUserId(idArray);
