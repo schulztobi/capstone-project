@@ -75,24 +75,28 @@ export default function CreateDarePage() {
       <Form onSubmit={sendForm}>
         <StyledLabel htmlFor="headline">
           Headline :
-          <input type="text" name="headline" onChange={handleDareChange} />
+          <InputStyled
+            type="text"
+            name="headline"
+            onChange={handleDareChange}
+          />
         </StyledLabel>
 
         <StyledLabel htmlFor="infotext">
           Infotext :
-          <textarea
+          <TextareaStyled
             name="infotext"
             cols="30"
             rows="10"
             onChange={handleDareChange}
-          ></textarea>
+          ></TextareaStyled>
         </StyledLabel>
-        <input type="text" name="daredUser" onChange={handleUserChange} />
+        <InputStyled type="text" name="daredUser" onChange={handleUserChange} />
         <ButtonContainer>
-          <button>Create</button>
+          <ButtonStyled>Create</ButtonStyled>
 
           <Link to="/DaresPage">
-            <button>Back</button>
+            <ButtonStyled>Back</ButtonStyled>
           </Link>
         </ButtonContainer>
       </Form>
@@ -114,8 +118,40 @@ const StyledLabel = styled.label`
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #fff;
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
+`;
+
+const ButtonStyled = styled.button`
+  color: #fbfcfd;
+  background: transparent;
+  border: 1px solid #fbfcfd;
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 25px;
+  margin: 5px;
+`;
+
+const InputStyled = styled.input`
+  color: #fbfcfd;
+  background: transparent;
+  border: 1px solid #fbfcfd;
+  border-radius: 20px;
+  outline: none;
+  padding: 10px 25px;
+  margin: 5px;
+`;
+
+const TextareaStyled = styled.textarea`
+  color: #fbfcfd;
+  background: transparent;
+  border: 1px solid #fbfcfd;
+  border-radius: 20px;
+  outline: none;
+  padding: 10px 25px;
+  margin: 5px;
 `;

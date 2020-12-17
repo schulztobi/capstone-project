@@ -27,14 +27,13 @@ export default function Darelist() {
   ////////////////////////////////////////////////////////////////////////
 
   function filteredDareUser(decodedToken, dares) {
-    const daredUserLists = dares.filter((dare) => dare.daredUser);
-    const findDaredUserList = daredUserLists.filter(
-      (daredUserList) => daredUserList.array && daredUserList.array === 'lala'
+    return dares.filter(
+      (dare) => dare.daredUser && dare.daredUser.includes(decodedToken.userId)
     );
-    return findDaredUserList;
   }
-
-  console.log(filteredDareUser(decodedToken, dareData));
+  const findDaredUser = filteredDareUser(decodedToken, dareData);
+  // console.log(filteredDareUser(decodedToken, dareData));
+  console.log(findDaredUser, 'findDaredUser');
 
   // // let idArray = [];
   // // filteredDaredUser.map((user) => idArray.push(user._id));
@@ -57,7 +56,7 @@ export default function Darelist() {
   return (
     <>
       <List>
-        {dareData?.map((dare) => {
+        {findDaredUser?.map((dare) => {
           return (
             <DareCard key={dare._id} id={dare._id} headline={dare.headline} />
           );
