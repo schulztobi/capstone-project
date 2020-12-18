@@ -54,6 +54,7 @@ export default function CreateDarePage() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'auth-token': loadToken(),
       },
       body: JSON.stringify(createDare),
     })

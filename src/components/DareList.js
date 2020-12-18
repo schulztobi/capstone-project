@@ -3,6 +3,7 @@ import DareCard from '../components/DareCard';
 import { useEffect, useState } from 'react';
 import getDares from '../services/getDares';
 import { decodedToken } from '../services/decodedToken';
+import getUserDares from '../services/getUserDares';
 
 export default function Darelist() {
   const [dareData, setDareData] = useState([
@@ -12,19 +13,12 @@ export default function Darelist() {
     },
   ]);
 
+  const [daresData, setDaresData] = useState([[], []]);
+
   useEffect(() => {
     getDares().then((data) => setDareData([...data]));
+    getUserDares().then((data) => setDaresData(data));
   }, []);
-
-  //////////////////////// Whom I Dare List //////////////////////////////////
-  function filteredDareCreator(decodedToken, dares) {
-    return dares.filter(
-      (dare) => dare.dareCreator && dare.dareCreator === decodedToken.userId
-    );
-  }
-  const findDareCreator = filteredDareCreator(decodedToken, dareData);
-
-  ////////////////////////////////////////////////////////////////////////
 
   function filteredDareUser(decodedToken, dares) {
     return dares.filter(
@@ -32,31 +26,11 @@ export default function Darelist() {
     );
   }
   const findDaredUser = filteredDareUser(decodedToken, dareData);
-  // console.log(filteredDareUser(decodedToken, dareData));
-  console.log(findDaredUser, 'findDaredUser');
-
-  // // let idArray = [];
-  // // filteredDaredUser.map((user) => idArray.push(user._id));
-  // // setFindDaredUserId(idArray);
-  // const showDaredUserId = filteredDaredUser.filter((user) => {
-  //   return user.dareCreator;
-  // });
-  // console.log(decodedToken.userId);
-  // console.log('showUserId', showDaredUserId);
-
-  // function handleDareChange(decodedToken) {
-  //   const filteredDare = dareData.filter((dare) => {
-  //     return dare.dareCreator.toLowerCase().includes(decodedToken.userId);
-  //   });
-  //   console.log('filterdare', filteredDare);
-  // }
-
-  // handleDareChange({ decodedToken });
 
   return (
     <>
       <List>
-        {findDaredUser?.map((dare) => {
+        {daresData[1].map((dare) => {
           return (
             <DareCard key={dare._id} id={dare._id} headline={dare.headline} />
           );
