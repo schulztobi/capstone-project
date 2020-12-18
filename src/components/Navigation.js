@@ -64,7 +64,7 @@ const NavLinks = styled.ul`
   margin: 0;
   align-items: center;
   background: transparent;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(5px);
   color: #fff;
   overflow: hidden;
   position: sticky;

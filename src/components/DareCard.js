@@ -6,7 +6,7 @@ export default function DareCard({ id, headline }) {
     <DareCardSection>
       <h3>{headline}</h3>
       <Link to={`/DaresPage/${id}`}>
-        <StyledButton>Show me</StyledButton>
+        <ButtonStyled>Show me</ButtonStyled>
       </Link>
     </DareCardSection>
   );
@@ -31,7 +31,7 @@ const DareCardSection = styled.section`
     font-size: 120%;
   }
 `;
-const StyledButton = styled.button`
+const ButtonStyled = styled.button`
   color: #fbfcfd;
   background: transparent;
   border: 1px solid #fbfcfd;

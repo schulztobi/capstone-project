@@ -4,6 +4,11 @@ import Navigation from '../components/Navigation';
 import { deleteToken } from '../services/tokenStorage';
 import styled from 'styled-components/macro';
 import { useState } from 'react';
+import {
+  StyledButton,
+  StyledBackgroundModal,
+  StyledModal,
+} from '../styles/ReusableStyledComponents';
 
 export default function ProfilePage() {
   const [isLoggedOut, setIsLoggedOut] = useState(false);
@@ -16,9 +21,9 @@ export default function ProfilePage() {
 
   return (
     <>
-      <StyledContainer>
+      <ContainerStyled>
         <Header title="Profile" />
-        <StyledButton onClick={logOut}>Logout</StyledButton>
+        <ButtonStyled onClick={logOut}>Logout</ButtonStyled>
         {isLoggedOut && (
           <StyledBackgroundModal>
             <StyledModal>
@@ -30,39 +35,18 @@ export default function ProfilePage() {
           </StyledBackgroundModal>
         )}
         {changePage && <Redirect to="/" />}
-      </StyledContainer>
+      </ContainerStyled>
       <Navigation />
     </>
   );
 }
-const StyledContainer = styled.div`
+const ContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
 `;
 
-const StyledBackgroundModal = styled.div`
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledModal = styled.div`
-  color: #fff;
-  background: linear-gradient(-45deg, #e73c7e, #23a6d5);
-  height: 20%;
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  border-radius: 20px;
-  align-items: center;
-  flex-direction: column;
-`;
-const StyledButton = styled.button`
+const ButtonStyled = styled.button`
   color: #fbfcfd;
   background: transparent;
   border: 1px solid #fbfcfd;

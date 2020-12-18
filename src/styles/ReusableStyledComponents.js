@@ -7,7 +7,6 @@ const StyledContainer = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  position: relative;
 `;
 
 const Styledform = styled.form`
