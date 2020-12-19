@@ -1,12 +1,20 @@
 import React, { Fragment, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import { StyledInput, StyledButton } from '../styles/ReusableStyledComponents';
+import {
+  StyledInput,
+  StyledButton,
+  StyledModal,
+  StyledBackgroundModal,
+} from '../styles/ReusableStyledComponents';
 import styled from 'styled-components/macro';
 
 export default function FileUpload({ dare }) {
   const [file, setFile] = useState('');
   const [filename, setFilename] = useState('');
   const [uploadedFile, setUploadedFile] = useState({});
+  const [changePage, setChangePage] = useState(false);
+  const [uploadInfo, setUploadInfo] = useState(false);
 
   function onChange(event) {
     console.log(event, 'filepath');
@@ -16,6 +24,7 @@ export default function FileUpload({ dare }) {
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    setUploadInfo(true);
     const formData = new FormData();
     formData.append('file', file);
     console.log(formData);
@@ -60,6 +69,17 @@ export default function FileUpload({ dare }) {
           />
         </>
       ) : null}
+      {uploadInfo && (
+        <StyledBackgroundModal>
+          <StyledModal>
+            <p>Upload of Proof successful</p>
+            <StyledButton onClick={() => setChangePage(true)}>
+              I Dare
+            </StyledButton>
+          </StyledModal>
+        </StyledBackgroundModal>
+      )}
+      {changePage && <Redirect to="/DaresPage" />}
     </Fragment>
   );
 }

@@ -80,6 +80,7 @@ export default function CreateDarePage() {
             name="headline"
             onChange={handleDareChange}
             placeholder="Enter your Dare Name..."
+            required
           />
         </StyledLabel>
 
@@ -91,6 +92,7 @@ export default function CreateDarePage() {
             rows="10"
             onChange={handleDareChange}
             placeholder="Enter Details about your Dare..."
+            required
           ></TextareaStyled>
         </StyledLabel>
         <StyledLabel htmlFor="daredUser">
@@ -100,6 +102,7 @@ export default function CreateDarePage() {
             name="daredUser"
             onChange={handleUserChange}
             placeholder="Enter User you wanna dare..."
+            required
           />
         </StyledLabel>
         <StyledLabel>Userlist :</StyledLabel>
