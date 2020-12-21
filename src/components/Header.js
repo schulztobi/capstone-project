@@ -19,6 +19,7 @@ const StyledHeader = styled.header`
   height: 80px;
   background: transparent;
   box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.3);
+  width: 85%;
 `;
 
 const Headline = styled.h1`

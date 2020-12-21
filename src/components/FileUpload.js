@@ -72,7 +72,7 @@ export default function FileUpload({ dare }) {
       {uploadInfo && (
         <StyledBackgroundModal>
           <StyledModal>
-            <p>Upload of Proof successful</p>
+            <p>Upload successful</p>
             <StyledButton onClick={() => setChangePage(true)}>
               I Dare
             </StyledButton>

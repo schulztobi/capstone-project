@@ -75,7 +75,8 @@ const StyledCard = styled.section`
   justify-content: center;
   align-items: center;
   border: 1px solid #fff;
-  padding: 40px;
+  padding: 30px;
+  margin: 15px;
   border-radius: 10px;
   box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.3);
   h1 {

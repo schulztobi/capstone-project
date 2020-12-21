@@ -6,11 +6,18 @@ import Navigation from '../components/Navigation';
 import getUser from '../services/getUser';
 import jwt_decode from 'jwt-decode';
 import { loadToken } from '../services/tokenStorage';
+import {
+  StyledButton,
+  StyledBackgroundModal,
+  StyledModal,
+  StyledContainer,
+} from '../styles/ReusableStyledComponents';
 
 export default function CreateDarePage() {
   const [allUser, setAllUser] = useState([]);
   const [findUserId, setFindUserId] = useState([]);
   const [findUserName, setFindUserName] = useState([]);
+  const [uploadSuccessful, setUploadSuccesful] = useState(false);
   const [createDare, setCreateDare] = useState({
     headline: '',
     infotext: '',
@@ -71,55 +78,69 @@ export default function CreateDarePage() {
 
   return (
     <>
-      <Header title="Create A Dare" />
-      <FormStyled onSubmit={sendForm}>
-        <StyledLabel htmlFor="headline">
-          Headline :
-          <InputStyled
-            type="text"
-            name="headline"
-            onChange={handleDareChange}
-            placeholder="Enter your Dare Name..."
-            required
-          />
-        </StyledLabel>
+      <StyledContainer>
+        <Header title="Create A Dare" />
+        <FormStyled onSubmit={sendForm}>
+          <StyledLabel htmlFor="headline">
+            Headline :
+            <InputStyled
+              type="text"
+              name="headline"
+              onChange={handleDareChange}
+              placeholder="Enter your Dare topic..."
+              required
+            />
+          </StyledLabel>
 
-        <StyledLabel htmlFor="infotext">
-          Infotext :
-          <TextareaStyled
-            name="infotext"
-            cols="30"
-            rows="10"
-            onChange={handleDareChange}
-            placeholder="Enter Details about your Dare..."
-            required
-          ></TextareaStyled>
-        </StyledLabel>
-        <StyledLabel htmlFor="daredUser">
-          I dare :
-          <InputStyled
-            type="text"
-            name="daredUser"
-            onChange={handleUserChange}
-            placeholder="Enter User you wanna dare..."
-            required
-          />
-        </StyledLabel>
-        <StyledLabel>Userlist :</StyledLabel>
-        <List>
-          {findUserName.map((user, index) => (
-            <DareCardSection key={index}>{user}</DareCardSection>
-          ))}
-        </List>
-        <ButtonContainer>
-          <ButtonStyled>Create</ButtonStyled>
+          <StyledLabel htmlFor="infotext">
+            Infotext :
+            <TextareaStyled
+              name="infotext"
+              cols="30"
+              rows="10"
+              onChange={handleDareChange}
+              placeholder="Enter more details about your Dare..."
+              required
+            ></TextareaStyled>
+          </StyledLabel>
+          <StyledLabel htmlFor="daredUser">
+            I dare :
+            <InputStyled
+              type="text"
+              name="daredUser"
+              onChange={handleUserChange}
+              placeholder="Enter the Username you wanna dare..."
+              required
+            />
+          </StyledLabel>
+          {/* <StyledLabel>Userlist :</StyledLabel>
+          <List>
+            {findUserName.map((user, index) => (
+              <DareCardSection key={index}>{user}</DareCardSection>
+            ))}
+          </List> */}
+          <ButtonContainer>
+            <ButtonStyled onClick={() => setUploadSuccesful(true)}>
+              Create
+            </ButtonStyled>
 
-          <Link to="/DaresPage">
-            <ButtonStyled>Back</ButtonStyled>
-          </Link>
-        </ButtonContainer>
-      </FormStyled>
-      <Navigation />
+            <Link to="/DaresPage">
+              <ButtonStyled>Back</ButtonStyled>
+            </Link>
+          </ButtonContainer>
+        </FormStyled>
+        <Navigation />
+        {uploadSuccessful && (
+          <StyledBackgroundModal>
+            <StyledModal>
+              <p>Dare created successfully</p>
+              <Link to="/DaresPage">
+                <StyledButton>ok</StyledButton>
+              </Link>
+            </StyledModal>
+          </StyledBackgroundModal>
+        )}
+      </StyledContainer>
     </>
   );
 }
@@ -163,7 +184,7 @@ const StyledLabel = styled.label`
   flex-direction: column;
   align-items: center;
   color: #fff;
-  width: 80%;
+  width: 90%;
   margin: 5px;
 `;
 
@@ -178,10 +199,10 @@ const ButtonStyled = styled.button`
   border-radius: 20px;
   outline: none;
   cursor: pointer;
-  padding: 20px 45px;
+  padding: 20px 40px;
   margin: 5px;
   margin-top: 20px;
-  font-size: 20px;
+  font-size: 15px;
 `;
 
 const InputStyled = styled.input`
