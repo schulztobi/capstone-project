@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 import { Link } from 'react-router-dom';
-import getDares from '../services/getDares';
 import { useEffect, useState } from 'react';
+import getDares from '../services/getDares';
 
 export default function WhomIDaredCardDownload({ match }) {
   const [dareData, setDareData] = useState([
@@ -12,12 +12,12 @@ export default function WhomIDaredCardDownload({ match }) {
   ]);
 
   useEffect(() => {
-    getDares().then((data) => setDareData([...data]));
+    getDares().then(data => setDareData([...data]));
   }, []);
 
   console.log(dareData);
 
-  const fetchedDare = dareData.find((dare) => dare._id === match.params.id);
+  const fetchedDare = dareData.find(dare => dare._id === match.params.id);
   console.log('fetchdare', fetchedDare);
 
   return (
@@ -35,7 +35,7 @@ export default function WhomIDaredCardDownload({ match }) {
             alt=""
           />
           <StyledButtonContainer>
-            <Link to={`/DaresPage`}>
+            <Link to="/DaresPage">
               <StyledButtonDare>You nailed it</StyledButtonDare>
             </Link>
             <Link to="/DaresPage/">

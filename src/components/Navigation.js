@@ -9,7 +9,7 @@ import {
   FaRegUser,
 } from 'react-icons/fa';
 
-const Navigation = (props) => {
+const Navigation = props => {
   console.log('props', props);
   return (
     <NavBar>

@@ -1,13 +1,13 @@
 import React, { Fragment, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import styled from 'styled-components/macro';
 import {
   StyledInput,
   StyledButton,
   StyledModal,
   StyledBackgroundModal,
 } from '../styles/ReusableStyledComponents';
-import styled from 'styled-components/macro';
 
 export default function FileUpload({ dare }) {
   const [file, setFile] = useState('');
@@ -22,7 +22,7 @@ export default function FileUpload({ dare }) {
     setFilename(event.target.files[0].name);
   }
 
-  const onSubmit = async (event) => {
+  const onSubmit = async event => {
     event.preventDefault();
     setUploadInfo(true);
     const formData = new FormData();
@@ -37,7 +37,7 @@ export default function FileUpload({ dare }) {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
-        }
+        },
       );
 
       const { fileName, filePath } = res.data;
@@ -50,7 +50,7 @@ export default function FileUpload({ dare }) {
   };
 
   return (
-    <Fragment>
+    <>
       <StyledForm>
         <StyledInput type="file" id="customFile" onChange={onChange} />
         {/* <label htmlFor="customFile">{filename}</label> */}
@@ -80,7 +80,7 @@ export default function FileUpload({ dare }) {
         </StyledBackgroundModal>
       )}
       {changePage && <Redirect to="/DaresPage" />}
-    </Fragment>
+    </>
   );
 }
 

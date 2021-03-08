@@ -1,9 +1,9 @@
-import useForm from '../hooks/useForm';
-import loginUser from '../services/loginUser';
 import { useState } from 'react';
-import { saveToken } from '../services/tokenStorage';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components/macro';
+import useForm from '../hooks/useForm';
+import loginUser from '../services/loginUser';
+import { saveToken } from '../services/tokenStorage';
 import {
   StyledContainer,
   Styledform,
@@ -21,7 +21,7 @@ export default function LoginPage() {
       username: '',
       password: '',
     },
-    submitForm
+    submitForm,
   );
 
   const [loggedIn, setLoggedIn] = useState(false);
@@ -31,7 +31,7 @@ export default function LoginPage() {
 
   function submitForm() {
     loginUser(inputs)
-      .then((result) => {
+      .then(result => {
         if (result.message !== 'success') {
           setWrongData(true);
         } else {
@@ -55,7 +55,7 @@ export default function LoginPage() {
             type="text"
             name="username"
             onChange={handleInputChange}
-            placeholder={'Username'}
+            placeholder="Username"
             value={inputs.username}
             autoComplete="off"
           />
@@ -63,7 +63,7 @@ export default function LoginPage() {
             type="password"
             name="password"
             onChange={handleInputChange}
-            placeholder={'Password'}
+            placeholder="Password"
             value={inputs.password}
           />
           <StyledButton>Login</StyledButton>

@@ -1,9 +1,9 @@
 import { Redirect } from 'react-router-dom';
+import styled from 'styled-components/macro';
+import { useState } from 'react';
 import Header from '../components/Header';
 import Navigation from '../components/Navigation';
 import { deleteToken } from '../services/tokenStorage';
-import styled from 'styled-components/macro';
-import { useState } from 'react';
 import {
   StyledButton,
   StyledBackgroundModal,
