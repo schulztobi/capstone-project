@@ -8,6 +8,6 @@ export default function getDares() {
       'auth-token': loadToken(),
     },
   })
-    .then((res) => res.json({}))
-    .then((data) => data);
+    .then(res => res.json({}))
+    .then(data => data);
 }

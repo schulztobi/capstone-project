@@ -1,15 +1,15 @@
 import styled from 'styled-components/macro';
+import { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import Navigation from '../components/Navigation';
 import getUserDares from '../services/getUserDares';
 import DareCard from '../components/DareCard';
-import { useEffect, useState } from 'react';
 import WhomIDaredCard from '../components/WhomIDaredCard';
 
 export default function DaresPage() {
   const [daresData, setDaresData] = useState([[], []]);
   useEffect(() => {
-    getUserDares().then((data) => setDaresData(data));
+    getUserDares().then(data => setDaresData(data));
   }, []);
 
   return (
@@ -18,13 +18,13 @@ export default function DaresPage() {
       <StyledCardGrid>
         <Headline>Dares</Headline>
         <List>
-          {daresData[1].map((dare) => (
+          {daresData[1].map(dare => (
             <DareCard key={dare._id} id={dare._id} headline={dare.headline} />
           ))}
         </List>
         <Headline>Whom I dared</Headline>
         <List>
-          {daresData[0].map((dare) => (
+          {daresData[0].map(dare => (
             <WhomIDaredCard
               key={dare._id}
               id={dare._id}

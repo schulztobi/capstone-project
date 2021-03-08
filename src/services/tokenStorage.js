@@ -1,10 +1,8 @@
-const saveToken = (tokenValue) => {
+const saveToken = tokenValue => {
   localStorage.setItem('token', tokenValue);
 };
 
-const loadToken = () => {
-  return localStorage.getItem('token');
-};
+const loadToken = () => localStorage.getItem('token');
 
 const deleteToken = () => {
   localStorage.removeItem('token');

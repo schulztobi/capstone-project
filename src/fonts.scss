@@ -1,0 +1,19 @@
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/3d1a58");
+  
+@font-face {
+  font-family: "Lufga-SemiBold";
+  src: url('./fonts/Lufga/LufgaSemiBold/font.woff2') format('woff2'), url('./fonts/Lufga/LufgaSemiBold/font.woff') format('woff');
+}
+
+@font-face {
+  font-family: "Lufga-Medium";
+  src: url('./fonts/Lufga/LufgaMedium/font.woff2') format('woff2'), url('./fonts/Lufga/LufgaMedium/font.woff') format('woff');
+}
+
+@font-face {
+  font-family: "Lufga-Regular";
+  src: url('./fonts/Lufga/LufgaRegular/font.woff2') format('woff2'), url('./fonts/Lufga/LufgaRegular/font.woff') format('woff');
+}
+
+

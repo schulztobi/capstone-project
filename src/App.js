@@ -1,5 +1,5 @@
-import DaresPage from './pages/DaresPage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import DaresPage from './pages/DaresPage';
 import CreateDarePage from './pages/CreateDarePage';
 import ProfilePage from './pages/ProfilePage';
 import DareCardDetails from './components/DareCardDetails';

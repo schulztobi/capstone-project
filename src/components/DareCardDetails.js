@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 import { Link } from 'react-router-dom';
-import getDares from '../services/getDares';
 import { useEffect, useState } from 'react';
+import getDares from '../services/getDares';
 
 export default function DareCardDetails({ match }) {
   const [dareData, setDareData] = useState([
@@ -12,12 +12,12 @@ export default function DareCardDetails({ match }) {
   ]);
 
   useEffect(() => {
-    getDares().then((data) => setDareData([...data]));
+    getDares().then(data => setDareData([...data]));
   }, []);
 
   console.log(dareData);
 
-  const fetchedDare = dareData.find((dare) => dare._id === match.params.id);
+  const fetchedDare = dareData.find(dare => dare._id === match.params.id);
   console.log('fetchdare', fetchedDare);
 
   return (

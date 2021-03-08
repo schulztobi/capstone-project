@@ -1,10 +1,10 @@
-import Header from '../components/Header';
 import styled from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import jwt_decode from 'jwt-decode';
 import Navigation from '../components/Navigation';
 import getUser from '../services/getUser';
-import jwt_decode from 'jwt-decode';
+import Header from '../components/Header';
 import { loadToken } from '../services/tokenStorage';
 import {
   StyledButton,
@@ -25,11 +25,11 @@ export default function CreateDarePage() {
     dareCreator: '',
   });
 
-  let token = loadToken();
+  const token = loadToken();
   const decodedToken = jwt_decode(token);
 
   useEffect(() => {
-    getUser().then((data) => {
+    getUser().then(data => {
       setAllUser([...data]);
       setCreateDare({
         ...createDare,
@@ -40,17 +40,15 @@ export default function CreateDarePage() {
   }, [findUserId]);
 
   function handleUserChange(event) {
-    const filteredUser = allUser.filter((user) => {
-      return user.username
-        .toLowerCase()
-        .includes(event.target.value.toLowerCase());
-    });
-    let idArray = [];
-    filteredUser.map((user) => idArray.push(user._id));
+    const filteredUser = allUser.filter(user =>
+      user.username.toLowerCase().includes(event.target.value.toLowerCase()),
+    );
+    const idArray = [];
+    filteredUser.map(user => idArray.push(user._id));
     setFindUserId(idArray);
 
-    let nameArray = [];
-    filteredUser.map((user) => nameArray.push(user.username));
+    const nameArray = [];
+    filteredUser.map(user => nameArray.push(user.username));
     setFindUserName(nameArray);
   }
 
@@ -64,9 +62,9 @@ export default function CreateDarePage() {
       },
       body: JSON.stringify(createDare),
     })
-      .then((data) => data.json())
-      .then((createdDare) => console.log(createdDare, 'CREATED'))
-      .catch((error) => console.error(error));
+      .then(data => data.json())
+      .then(createdDare => console.log(createdDare, 'CREATED'))
+      .catch(error => console.error(error));
   }
 
   function handleDareChange(event) {
@@ -101,7 +99,7 @@ export default function CreateDarePage() {
               onChange={handleDareChange}
               placeholder="Enter more details about your Dare..."
               required
-            ></TextareaStyled>
+            />
           </StyledLabel>
           <StyledLabel htmlFor="daredUser">
             I dare :

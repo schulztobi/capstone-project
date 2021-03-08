@@ -1,8 +1,8 @@
-import useForm from '../hooks/useForm';
-import registerUser from '../services/registerUser';
 import { useState } from 'react';
 import styled from 'styled-components/macro';
 import { Redirect } from 'react-router-dom';
+import registerUser from '../services/registerUser';
+import useForm from '../hooks/useForm';
 import {
   StyledContainer,
   Styledform,
@@ -21,7 +21,7 @@ export default function RegisterPage() {
       email: '',
       password: '',
     },
-    submitForm
+    submitForm,
   );
 
   const [isSuccess, setIsSuccess] = useState(false);
@@ -31,7 +31,7 @@ export default function RegisterPage() {
 
   function submitForm() {
     registerUser(inputs)
-      .then((result) => {
+      .then(result => {
         if (result.message === 'success') {
           setIsSuccess(true);
         } else if (result.message === 'User or email already taken') {
@@ -54,21 +54,21 @@ export default function RegisterPage() {
             type="text"
             name="username"
             onChange={handleInputChange}
-            placeholder={'Username'}
+            placeholder="Username"
             autoComplete="off"
           />
           <StyledInput
             type="email"
             name="email"
             onChange={handleInputChange}
-            placeholder={'Email'}
+            placeholder="Email"
             autoComplete="off"
           />
           <StyledInput
             type="password"
             name="password"
             onChange={handleInputChange}
-            placeholder={'Password'}
+            placeholder="Password"
           />
           <StyledButton>Sign Up</StyledButton>
         </Styledform>

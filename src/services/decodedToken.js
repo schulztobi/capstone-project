@@ -1,5 +1,5 @@
 import jwt_decode from 'jwt-decode';
-import { loadToken } from '../services/tokenStorage';
+import { loadToken } from './tokenStorage';
 
 const token = loadToken();
 const decodedToken = jwt_decode(token);
