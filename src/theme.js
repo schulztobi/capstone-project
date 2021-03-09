@@ -41,9 +41,9 @@ import { createMuiTheme } from '@material-ui/core/styles';
 // };
 
 const uColors = {
-  primary: '#00119a',
+  primary: '#D40078',
   primaryHover: '#000955',
-  secondary: '#ffffff',
+  secondary: '#046FE5',
   secondaryHover: '#00119a',
   secondaryDisabled: '#ffffff4d',
   disabled: '#e0e2f2',
@@ -62,11 +62,14 @@ const uColors = {
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: ['Arial'],
+    fontFamily: ['"Bangers", cursive'],
     h1: {
-      fontSize: '34px',
+      fontSize: '42px',
       lineHeight: '41px',
       fontWeight: '600',
+      textShadow:
+        '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
+      letterSpacing: '3px',
     },
     h2: {
       fontSize: '22px',
@@ -84,14 +87,17 @@ const theme = createMuiTheme({
       fontWeight: '500',
     },
     body1: {
+      fontFamily: ['Arial'],
       fontSize: '15px',
       lineHeight: '20px',
       fontWeight: '400',
     },
     body2: {
+      fontFamily: ['Arial'],
       fontSize: '13px',
       lineHeight: '18px',
       fontWeight: '400',
+      color: '#fff',
     },
     button: {
       fontSize: '17px',
@@ -106,8 +112,14 @@ const theme = createMuiTheme({
       white: uColors.neutralWhite,
     },
     background: {
-      paper: '#fff',
-      default: '#fafafa',
+      // paper: '#000',
+      default: '#000',
+    },
+    text: {
+      primary: uColors.primary,
+      secondary: uColors.secondary,
+      disabled: uColors.disabled,
+      hint: uColors.accentMagenta,
     },
     grey: {
       50: '#fafafa',
@@ -134,69 +146,31 @@ const theme = createMuiTheme({
     success: {
       main: uColors.success,
     },
-    text: {
-      primary: uColors.primary,
-      secondary: uColors.secondary,
-      disabled: uColors.disabled,
-      hint: uColors.accentMagenta,
-    },
-    uAccent: {
-      teal: uColors.accentTeal,
-      magenta: uColors.accentMagenta,
-    },
-    uNeutral: {
-      white: uColors.neutralWhite,
-      gray: uColors.neutralGray,
-      black: uColors.neutralBlack,
-    },
-  },
-  uGradient: {
-    colors: {
-      magenta: uColors.gradientMagenta,
-      blue: uColors.gradientBlue,
-    },
   },
   overrides: {
     MuiCssBaseline: {
-      // '@global': {
-      //   '@font-face': [lufgaM, lufgaSM, lufgaR],
-      // },
+      '@global': {
+        // fontFamily: 'Impact',
+      },
     },
-    MuiButton: {
-      containedPrimary: {
-        '&:disabled': {
-          backgroundColor: uColors.disabled,
-          color: uColors.neutralWhite,
-          opacity: '0.6',
-        },
+    MuiOutlinedInput: {
+      root: {
+        // margin: '8px 0 8px 0',
+        borderRadius: '24px',
+        // height: '48px',
+        width: '269px',
+        backgroundColor: '#fff',
+        color: '#1f1f1f',
       },
-      outlinedPrimary: {
-        border: '2px solid',
-        '&:hover': {
-          border: '2px solid',
-        },
-        '&:disabled': {
-          border: '2px solid',
-          color: uColors.disabled,
-          borderColor: uColors.disabled,
-        },
-      },
-      containedSecondary: {
-        color: uColors.primary,
-        '&:disabled': {
-          color: uColors.disabled,
-          backgroundColor: uColors.neutralWhite,
-        },
-      },
-      outlinedSecondary: {
-        border: '2px solid',
-        '&:hover': {
-          border: '2px solid',
-        },
-        '&:disabled': {
-          border: '2px solid',
-          color: uColors.secondaryDisabled,
-          borderColor: uColors.secondaryDisabled,
+    },
+    MuiInputLabel: {
+      root: {
+        color: '#1f1f1f',
+        '&$focused': {
+          color: '#1f1f1f',
+          fontSize: '18px',
+          fontWeight: 'bold',
+          fontFamily: ['"Bangers", cursive'],
         },
       },
     },

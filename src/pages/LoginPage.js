@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import styled from 'styled-components/macro';
 import useForm from '../hooks/useForm';
 import loginUser from '../services/loginUser';
 import { saveToken } from '../services/tokenStorage';
