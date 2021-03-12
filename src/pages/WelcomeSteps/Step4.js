@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
     height: '667px',
   },
   header: {
-    marginTop: '80px',
+    marginTop: '30px',
     padding: '25px',
     textAlign: 'center',
     margin: '0 auto',

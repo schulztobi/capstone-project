@@ -167,7 +167,6 @@ export default function ProfilePage() {
             className={classes.impressionImage}
           />
         </div>
-        <Navigation />
       </Background>
     </>
   );

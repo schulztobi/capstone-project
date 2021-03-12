@@ -57,8 +57,8 @@ export default function Navigation() {
 
       <BottomNavigationAction
         component={Link}
-        to="/DaresPage"
-        value="favorites"
+        to="/myDares"
+        value="mydares"
         icon={<AppsIcon />}
       />
       <BottomNavigationAction

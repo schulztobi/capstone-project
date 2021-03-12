@@ -88,7 +88,6 @@ export default function DaresPage() {
             />
           ))} */}
         </div>
-        <Navigation />
       </Background>
     </>
   );
