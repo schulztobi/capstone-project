@@ -183,15 +183,24 @@ export default function CreateDarePage() {
           className={classes.header}
           justify="center"
           alignItems="center"
+          direction="column"
         >
           <Typography
-            variant="h1"
-            component="h1"
+            variant="h2"
+            component="h2"
             gutterBottom
             color="primary"
             textAlign="center"
           >
             Create Dare
+          </Typography>
+          <Typography
+            variant="h1"
+            component="h1"
+            gutterBottom
+            textAlign="center"
+          >
+            {stepCount}/4
           </Typography>
         </Grid>
 
