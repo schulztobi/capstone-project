@@ -1,31 +1,35 @@
 import { Link } from 'react-router-dom';
-import { Box, Button, makeStyles, Typography } from '@material-ui/core';
+import { Box, makeStyles, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
   },
-  dareCard: {
-    backgroundColor: '#120032',
-    width: '158px',
-    height: '140px',
+  dareHighlight: {
+    width: '324px',
+    height: '192px',
     display: 'flex',
-    flexDirection: 'column',
-    marginBottom: '7px',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    textAlign: 'left',
+
+    margin: '0 auto',
     borderRadius: '5px',
-    padding: '12px',
+    backgroundColor: '#120032',
+    padding: '25px',
     boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.16)',
   },
+
   timeAgo: {
     fontSize: '8px',
   },
 }));
 
-export default function DareCard({ id, headline }) {
+export default function DareCardHighlight({ id, headline }) {
   const classes = useStyles();
 
   return (
-    <div className={classes.dareCard}>
+    <div className={classes.dareHighlight}>
       <Link to={`/DaresPage/${id}`}>
         <Box textAlign="right">
           <Typography variant="body2" className={classes.timeAgo}>

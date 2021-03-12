@@ -15,37 +15,42 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
     height: '100%',
-    margin: '0',
-    padding: '0',
   },
   header: {
     backgroundImage: `url(${headerImage})`,
-    height: '125px',
+    height: '155px',
+
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
 
     backgroundPosition: 'center center',
-  },
-
-  contentHeader: {
-    borderTop: '1px solid #D40078',
-    borderRadius: '24px',
-    paddingTop: '40px',
-    marginBottom: '40px',
-    height: 'fit-content',
-    backgroundImage: `url(${symbolBg})`,
-    backgroundSize: 'cover',
-    width: '100%',
-  },
-  contentGrid: {
-    backgroundImage: `url(${symbolBg})`,
-    backgroundSize: 'cover',
   },
   grid: {
     height: '100%',
     background:
       'linear-gradient(#0b0629 0%, #290831 22.58%, #D40078 43.09%, #4c0b61 74.9%, #120032 100%)',
   },
+  symbolBg: {
+    backgroundImage: `url(${symbolBg})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center center',
+    height: '100%',
+  },
+  contentHeader: {
+    borderTop: '1px solid #D40078',
+    borderRadius: '24px',
+    paddingTop: '40px',
+    marginBottom: '40px',
+    height: 'fit-content',
+
+    backgroundSize: 'cover',
+    width: '100%',
+  },
+  contentGrid: {
+    backgroundSize: 'cover',
+  },
+
   button: {
     width: '269px',
     height: '48px',
@@ -72,10 +77,9 @@ export default function MainPage() {
       <div className={classes.root}>
         <Grid
           container
-          item
           xs={12}
           className={classes.header}
-          justify="center"
+          justify="flex-start"
           alignItems="center"
         >
           {/* <Typography
@@ -89,59 +93,63 @@ export default function MainPage() {
           </Typography> */}
         </Grid>
 
-        <Grid container spacing={0} className={classes.grid}>
-          <Grid item xs={12} justify="center" className={classes.contentHeader}>
-            <Box textAlign="center">
+        <Grid item justify="flex-start" className={classes.grid}>
+          <div className={classes.symbolBg}>
+            <Box textAlign="center" className={classes.contentHeader}>
               <Typography variant="h1" component="h1" color="primary">
                 Hey, <br />
                 Sign in now!
               </Typography>
             </Box>
-          </Grid>
-          <Grid
-            container
-            xs={12}
-            justify="space-evenly"
-            alignItems="center"
-            direction="column"
-            className={classes.contentGrid}
-          >
-            <CustomTextField
-              id="outlined-basic"
-              label="Username"
-              variant="outlined"
-            />
 
-            <CustomTextField
-              id="outlined-basic2"
-              label="Password"
-              variant="outlined"
-              type="password"
-            />
+            <Grid
+              container
+              xs={12}
+              justify="space-evenly"
+              alignItems="center"
+              direction="column"
+              className={classes.contentGrid}
+            >
+              <Box mb={2}>
+                <CustomTextField
+                  id="outlined-basic"
+                  label="Username"
+                  variant="outlined"
+                />
+              </Box>
+              <Box mb={2}>
+                <CustomTextField
+                  id="outlined-basic2"
+                  label="Password"
+                  variant="outlined"
+                  type="password"
+                />
+              </Box>
 
-            <Link to="/login">
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.button}
-              >
-                Login
-              </Button>
-            </Link>
+              <Link to="/login">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.button}
+                >
+                  Login
+                </Button>
+              </Link>
 
-            <Link to="/register">
-              <Button
-                variant="contained"
-                color="secondary"
-                className={classes.button}
-              >
-                Sign Up
-              </Button>
-            </Link>
-            <Box>
-              <Typography variant="body2">Bottom text ??</Typography>
-            </Box>
-          </Grid>
+              <Link to="/register">
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  className={classes.button}
+                >
+                  Sign Up
+                </Button>
+              </Link>
+              <Box>
+                <Typography variant="body2">Bottom text ??</Typography>
+              </Box>
+            </Grid>
+          </div>
         </Grid>
       </div>
     </>

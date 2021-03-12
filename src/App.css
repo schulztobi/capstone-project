@@ -1,4 +1,4 @@
-/* html {
+html {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -7,10 +7,18 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 #root {
   height: 100%;
   margin: 0;
   padding: 0;
-} */
+}
+a {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}

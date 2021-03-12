@@ -1,82 +1,79 @@
-import styled from 'styled-components/macro';
-import { Link, withRouter } from 'react-router-dom';
-import {
-  FaRegListAlt,
-  FaListAlt,
-  FaPlusSquare,
-  FaRegPlusSquare,
-  FaUser,
-  FaRegUser,
-} from 'react-icons/fa';
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import ViewListIcon from '@material-ui/icons/ViewList';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import AppsIcon from '@material-ui/icons/Apps';
+import { Link } from 'react-router-dom';
 
-const Navigation = props => {
-  console.log('props', props);
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: '100%',
+    position: 'fixed',
+    bottom: 0,
+    backgroundColor: '#120032',
+    boxShadow: '-1px -3px 22px 0px rgba(0,0,0,0.25)',
+
+    '& .MuiBottomNavigation-root': {
+      backgroundColor: '#000',
+    },
+    '& .MuiBottomNavigationAction-root': {
+      color: 'gray',
+    },
+    '& .Mui-selected': {
+      color: theme.palette.primary.main,
+    },
+  },
+}));
+
+export default function Navigation() {
+  const classes = useStyles();
+  const [value, setValue] = React.useState('favorites');
+
+  // const handleChange = (event, newValue) => {
+  //   console.log('sfdffd', event);
+  //   setValue(event.target.value);
+  // };
+
   return (
-    <NavBar>
-      <NavLinks>
-        <Link to="/DaresPage">
-          <li>
-            {props.location.pathname === '/DaresPage' ? (
-              <FaListAlt size="2em" color="var(--fifth)" />
-            ) : (
-              <FaRegListAlt size="2em" color="var(--fifth)" />
-            )}
-          </li>
-        </Link>
-        <Link to="/CreateDarePage">
-          <li>
-            {props.location.pathname === '/CreateDarePage' ? (
-              <FaPlusSquare size="2em" color="var(--fifth)" />
-            ) : (
-              <FaRegPlusSquare size="2em" color="var(--fifth)" />
-            )}
-          </li>
-        </Link>
-        <Link to="/ProfilePage">
-          <li>
-            {props.location.pathname === '/ProfilePage' ? (
-              <FaUser size="2em" color="var(--fifth)" />
-            ) : (
-              <FaRegUser size="2em" color="var(--fifth)" />
-            )}
-          </li>
-        </Link>
-      </NavLinks>
-    </NavBar>
+    <BottomNavigation
+      value={value}
+      onChange={(event, newValue) => {
+        console.log(newValue);
+        setValue(newValue);
+      }}
+      className={classes.root}
+      showLabels={false}
+    >
+      <BottomNavigationAction
+        component={Link}
+        to="/DaresPage"
+        value="recents"
+        icon={<ViewListIcon />}
+      />
+
+      <BottomNavigationAction
+        component={Link}
+        to="/DaresPage"
+        value="favorites"
+        icon={<AppsIcon />}
+      />
+      <BottomNavigationAction
+        component={Link}
+        to="/CreateDarePage"
+        value="create"
+        icon={<AddBoxIcon />}
+      />
+      <BottomNavigationAction
+        component={Link}
+        to="/ProfilePage"
+        label=""
+        value="profile"
+        icon={<AccountBoxIcon />}
+      />
+    </BottomNavigation>
   );
-};
-
-export default withRouter(Navigation);
-
-const NavBar = styled.nav`
-  padding: 0 20px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-`;
-
-const NavLinks = styled.ul`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  align-items: center;
-  background: transparent;
-  backdrop-filter: blur(5px);
-  color: #fff;
-  overflow: hidden;
-  position: sticky;
-  bottom: 0;
-  border: 1px solid #fff;
-  border-radius: 6px;
-  height: 50px;
-  width: 100%;
-  box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.3);
-  li {
-  }
-  a {
-    text-decoration: none;
-  }
-`;
+}

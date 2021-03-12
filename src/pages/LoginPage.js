@@ -1,18 +1,9 @@
+import { Button } from '@material-ui/core';
 import { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import useForm from '../hooks/useForm';
 import loginUser from '../services/loginUser';
 import { saveToken } from '../services/tokenStorage';
-import {
-  StyledContainer,
-  Styledform,
-  StyledContent,
-  StyledY,
-  StyledButton,
-  StyledInput,
-  StyledBackgroundModal,
-  StyledModal,
-} from '../styles/ReusableStyledComponents';
 
 export default function LoginPage() {
   const { inputs, handleInputChange, handleSubmit } = useForm(
@@ -43,14 +34,14 @@ export default function LoginPage() {
 
   return (
     <>
-      <StyledContainer>
-        <StyledContent>
+      <div>
+        <div>
           <h1>I Dare</h1>
-          <StyledY>You</StyledY>
+          <div>You</div>
           <p>enter an account</p>
-        </StyledContent>
-        <Styledform onSubmit={handleSubmit}>
-          <StyledInput
+        </div>
+        <form onSubmit={handleSubmit}>
+          <input
             type="text"
             name="username"
             onChange={handleInputChange}
@@ -58,38 +49,34 @@ export default function LoginPage() {
             value={inputs.username}
             autoComplete="off"
           />
-          <StyledInput
+          <input
             type="password"
             name="password"
             onChange={handleInputChange}
             placeholder="Password"
             value={inputs.password}
           />
-          <StyledButton>Login</StyledButton>
-        </Styledform>
+          <Button>Login</Button>
+        </form>
         {isSuccess && (
-          <StyledBackgroundModal>
-            <StyledModal>
+          <div>
+            <div>
               <p>Login successful</p>
-              <StyledButton onClick={() => setLoggedIn(true)}>
-                I Dare
-              </StyledButton>
-            </StyledModal>
-          </StyledBackgroundModal>
+              <Button onClick={() => setLoggedIn(true)}>I Dare</Button>
+            </div>
+          </div>
         )}
         {loggedIn && <Redirect to="/DaresPage" />}
         {wrongData && (
-          <StyledBackgroundModal>
-            <StyledModal>
+          <div>
+            <div>
               <p>User or Password wrong</p>
-              <StyledButton onClick={() => setIsError(true)}>
-                I Pussy out
-              </StyledButton>
-            </StyledModal>
-          </StyledBackgroundModal>
+              <Button onClick={() => setIsError(true)}>I Pussy out</Button>
+            </div>
+          </div>
         )}
         {isError && <Redirect to="/" />}
-      </StyledContainer>
+      </div>
     </>
   );
 }

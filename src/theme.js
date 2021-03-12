@@ -68,7 +68,7 @@ const theme = createMuiTheme({
       lineHeight: '41px',
       fontWeight: '600',
       textShadow:
-        '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
+        '-1px -1px 0 #120032, 1px -1px 0 #120032, -1px 1px 0 #120032, 1px 1px 0 #120032',
       letterSpacing: '3px',
     },
     h2: {
@@ -82,7 +82,7 @@ const theme = createMuiTheme({
       fontWeight: '600',
     },
     h4: {
-      fontSize: '15px',
+      fontSize: '16px',
       lineHeight: '20px',
       fontWeight: '500',
     },
@@ -99,6 +99,13 @@ const theme = createMuiTheme({
       fontWeight: '400',
       color: '#fff',
     },
+    subtitle1: {
+      fontSize: '22px',
+      lineHeight: '28px',
+      fontWeight: '600',
+      color: '#000',
+    },
+
     button: {
       fontSize: '17px',
       lineHeight: '22px',
@@ -159,15 +166,17 @@ const theme = createMuiTheme({
         borderRadius: '24px',
         // height: '48px',
         width: '269px',
-        backgroundColor: '#fff',
+        backgroundColor: 'rgba(255,255,255, 0.5)',
+
         color: '#1f1f1f',
       },
     },
     MuiInputLabel: {
       root: {
-        color: '#1f1f1f',
+        color: '#fff',
+        fontFamily: ['"Bangers", cursive'],
         '&$focused': {
-          color: '#1f1f1f',
+          color: '#fff',
           fontSize: '18px',
           fontWeight: 'bold',
           fontFamily: ['"Bangers", cursive'],

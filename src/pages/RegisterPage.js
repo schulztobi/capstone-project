@@ -3,16 +3,6 @@ import styled from 'styled-components/macro';
 import { Redirect } from 'react-router-dom';
 import registerUser from '../services/registerUser';
 import useForm from '../hooks/useForm';
-import {
-  StyledContainer,
-  Styledform,
-  StyledContent,
-  StyledY,
-  StyledButton,
-  StyledInput,
-  StyledBackgroundModal,
-  StyledModal,
-} from '../styles/ReusableStyledComponents';
 
 export default function RegisterPage() {
   const { inputs, handleInputChange, handleSubmit } = useForm(
@@ -43,59 +33,52 @@ export default function RegisterPage() {
 
   return (
     <>
-      <StyledContainer>
-        <StyledContent>
+      <div>
+        <div>
           <h1>I Dare</h1>
-          <StyledY>You</StyledY>
+          <div>You</div>
           <p>create an account</p>
-        </StyledContent>
-        <Styledform onSubmit={handleSubmit}>
-          <StyledInput
+        </div>
+        <div onSubmit={handleSubmit}>
+          <input
             type="text"
             name="username"
             onChange={handleInputChange}
             placeholder="Username"
             autoComplete="off"
           />
-          <StyledInput
+          <input
             type="email"
             name="email"
             onChange={handleInputChange}
             placeholder="Email"
             autoComplete="off"
           />
-          <StyledInput
+          <input
             type="password"
             name="password"
             onChange={handleInputChange}
             placeholder="Password"
           />
-          <StyledButton>Sign Up</StyledButton>
-        </Styledform>
+        </div>
         {isSuccess && (
-          <StyledBackgroundModal>
-            <StyledModal>
+          <div>
+            <div>
               <p>Sign Up successful</p>
-              <StyledButton onClick={() => setIsRegistered(true)}>
-                I Dare
-              </StyledButton>
-            </StyledModal>
-          </StyledBackgroundModal>
+            </div>
+          </div>
         )}
         {isRegistered && <Redirect to="/login" />}
 
         {userExist && (
-          <StyledBackgroundModal>
-            <StyledModal>
+          <div>
+            <div>
               <p>User or email taken!</p>
-              <StyledButton onClick={() => setIsError(true)}>
-                I Pussy Out
-              </StyledButton>
-            </StyledModal>
-          </StyledBackgroundModal>
+            </div>
+          </div>
         )}
         {isError && <Redirect to="/" />}
-      </StyledContainer>
+      </div>
     </>
   );
 }

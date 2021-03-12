@@ -1,9 +1,6 @@
+// TODO remove eslint disable
+/* eslint-disable */
 import FileUpload from './FileUpload';
-import {
-  StyledContainer,
-  StyledContent,
-  StyledY,
-} from '../styles/ReusableStyledComponents';
 
 export default function DareCardUpload({ match }) {
   return (

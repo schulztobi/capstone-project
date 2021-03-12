@@ -9,6 +9,7 @@
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.2.2",
     "axios": "^0.21.0",
+    "clsx": "^1.1.1",
     "jwt-decode": "^3.1.2",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -16,6 +17,7 @@
     "react-icons": "^4.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "react-step-builder": "^2.0.6",
     "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
   },
@@ -30,7 +32,8 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^5.0.9",
     "node-sass": "^5.0.0",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "react-step-builder": "^2.0.6"
   },
   "scripts": {
     "start": "react-scripts start",

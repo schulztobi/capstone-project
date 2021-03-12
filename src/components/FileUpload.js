@@ -1,13 +1,9 @@
+// TODO remove eslint disable
+/* eslint-disable */
 import React, { Fragment, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components/macro';
-import {
-  StyledInput,
-  StyledButton,
-  StyledModal,
-  StyledBackgroundModal,
-} from '../styles/ReusableStyledComponents';
 
 export default function FileUpload({ dare }) {
   const [file, setFile] = useState('');
